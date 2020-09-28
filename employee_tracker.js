@@ -219,8 +219,7 @@ function updateEmployee() {
     const eeObj = employees.find((e) => {
       return ans.name === `${e.first_name} ${e.last_name}`;
     });
-// console.log(roleObj,eeObj);
-    // update Employee role
+
     connection.query(
       "UPDATE employees SET role_id = ? WHERE id = ?", [roleObj.id, eeObj.id],  (err, data) => {
         if (err) throw err;
@@ -284,11 +283,7 @@ function addRoles() {
     const depObj = departments.find((d) => {
       return ans.dept === d.DNAME;
     });
-    // const roleSal = roles.find((r) => {
-    //   return ans.roleSalary === `${r.salary}`;
-    // });
-
-    // insert employee into the database
+   
     connection.query(
       `INSERT INTO  roles (title, salary, department_id ) VALUES(?,?,?) `,
       [ans.roleTitle, ans.roleSalary, depObj.id],  (err, data) => {
